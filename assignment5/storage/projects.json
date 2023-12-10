@@ -1,0 +1,34 @@
+[
+    {
+        "id":1,
+        "name": "Portfolio apple",
+        "type": "web app",
+        "img": "/assets/img/portfolio-apple.jpeg",
+        "duration": "6 Month",
+        "budget": "100000"
+    },
+    {
+        "id":2,
+        "name": "Portfolio Stripe",
+        "type": "web app",
+        "img": "/assets/img/portfolio-stripe.jpeg",
+        "duration": "6 Month",
+        "budget": "100000"
+    },
+    {
+        "id":3,
+        "name": "Portfolio fedex",
+        "type": "web app",
+        "img": "/assets/img/portfolio-fedex.jpeg",
+        "duration": "6 Month",
+        "budget": "100000"
+    },
+    {
+        "id":4,
+        "name": "Portfolio Microsoft",
+        "type": "web app",
+        "img": "/assets/img/portfolio-microsoft.jpeg",
+        "duration": "6 Month",
+        "budget": "100000"
+    }
+]
