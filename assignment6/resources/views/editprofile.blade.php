@@ -4,7 +4,9 @@
     <main class="container max-w-xl mx-auto space-y-8 mt-8 px-2 md:px-0 min-h-screen">
         <!-- Profile Edit Form -->
 
-        <form>
+        <form action="{{route('updateprofile')}}" method="POST">
+            @csrf
+            @method("PUT")
             <div class="space-y-12">
                 <div class="border-b border-gray-900/10 pb-12">
                     <h2 class="text-xl font-semibold leading-7 text-gray-900">
@@ -53,23 +55,29 @@
 
                         <div class="grid grid-cols-1 gap-x-6 gap-y-8 sm:grid-cols-6">
                             <div class="sm:col-span-3">
-                                <label for="first-name" class="block text-sm font-medium leading-6 text-gray-900">First
+                                <label for="firstname" class="block text-sm font-medium leading-6 text-gray-900">First
                                     name</label>
                                 <div class="mt-2">
-                                    <input type="text" name="first-name" id="first-name" autocomplete="given-name"
-                                        value="Ahmed Shamim Hasan"
+                                    <input type="text" name="firstname" id="firstname" autocomplete="given-name"
+                                        value="{{old('firstname', $user->firstname)}}"
                                         class="block w-full rounded-md border-0 p-2 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-gray-600 sm:text-sm sm:leading-6" />
                                 </div>
+                                @error('firstname')
+                                <div class="text-red-600">{{ $message }}</div>
+                            @enderror
                             </div>
 
                             <div class="sm:col-span-3">
-                                <label for="last-name" class="block text-sm font-medium leading-6 text-gray-900">Last
+                                <label for="lastname" class="block text-sm font-medium leading-6 text-gray-900">Last
                                     name</label>
                                 <div class="mt-2">
-                                    <input type="text" name="last-name" id="last-name" value="Shaon"
+                                    <input type="text" name="lastname" id="lastname"  value="{{old('lastname', $user->lastname)}}"
                                         autocomplete="family-name"
                                         class="block w-full rounded-md border-0 p-2 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-gray-600 sm:text-sm sm:leading-6" />
                                 </div>
+                                @error('lastname')
+                                <div class="text-red-600">{{ $message }}</div>
+                            @enderror
                             </div>
 
                             <div class="col-span-full">
@@ -77,18 +85,24 @@
                                     address</label>
                                 <div class="mt-2">
                                     <input id="email" name="email" type="email" autocomplete="email"
-                                        value="ahmed.shamim@admin.com"
+                                    value="{{old('email', $user->email)}}"
                                         class="block w-full rounded-md border-0 p-2 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-gray-600 sm:text-sm sm:leading-6" />
                                 </div>
+                                @error('email')
+                                <div class="text-red-600">{{ $message }}</div>
+                            @enderror
                             </div>
 
                             <div class="col-span-full">
                                 <label for="password"
                                     class="block text-sm font-medium leading-6 text-gray-900">Password</label>
                                 <div class="mt-2">
-                                    <input type="password" name="password" id="password" autocomplete="password"
+                                    <input type="text" name="password" id="password"  value="{{old('password')}}"
                                         class="block w-full rounded-md border-0 p-2 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-gray-600 sm:text-sm sm:leading-6" />
                                 </div>
+                                @error('password')
+                                <div class="text-red-600">{{ $message }}</div>
+                            @enderror
                             </div>
                         </div>
                     </div>
@@ -98,8 +112,10 @@
                             <label for="bio" class="block text-sm font-medium leading-6 text-gray-900">Bio</label>
                             <div class="mt-2">
                                 <textarea id="bio" name="bio" rows="3"
-                                    class="block w-full rounded-md border-0 p-2 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-gray-600 sm:text-sm sm:leading-6">
-    Less Talk, More Code 💻</textarea>
+                                    class="block w-full rounded-md border-0 p-2 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-gray-600 sm:text-sm sm:leading-6">{{old('bio', $user->bio)}}</textarea>
+                                    @error('bio')
+                                    <div class="text-red-600">{{ $message }}</div>
+                                @enderror
                             </div>
                             <p class="mt-3 text-sm leading-6 text-gray-600">
                                 Write a few sentences about yourself.

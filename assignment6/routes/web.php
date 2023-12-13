@@ -33,11 +33,8 @@ Route::group(['middleware' => ['auth']], function () {
     Route::get('/', function () {
         return view('home');
     })->name('home');
-    Route::get('/profile', function () {
-        return view('profile');
-    });
-    Route::get('/edit-profile', function () {
-        return view('edit-profile');
-    });
+    Route::get('/profile', [AuthController::class,"showprofile"])->name('profile');
+    Route::get('/edit-profile', [AuthController::class,"editprofile"])->name('editprofile');
+    Route::put('/update-profile', [AuthController::class,"update"])->name('updateprofile');
     Route::get("/log-out", [AuthController::class, "logout"])->name("logout");
 });

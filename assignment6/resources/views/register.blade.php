@@ -34,12 +34,12 @@
                 @method('POST')
                 <!-- Name -->
                 <div>
-                    <label for="name" class="block text-sm font-medium leading-6 text-gray-900">Full Name</label>
+                    <label for="firstname" class="block text-sm font-medium leading-6 text-gray-900">Full Name</label>
                     <div class="mt-2">
-                        <input id="name" name="name" type="text" placeholder="Alp Arslan" required
+                        <input id="firstname" name="firstname" value="{{old('firstname')}}" type="text" placeholder="Alp Arslan" required
                             class="block w-full rounded-md border-0 p-2 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-black sm:text-sm sm:leading-6" />
                     </div>
-                    @error('name')
+                    @error('firstname')
                         <div class="text-red-600">{{ $message }}</div>
                     @enderror
                 </div>
@@ -48,7 +48,7 @@
                 <div>
                     <label for="username" class="block text-sm font-medium leading-6 text-gray-900">Username</label>
                     <div class="mt-2">
-                        <input id="username" name="username" type="text" placeholder="alparslan1029" required
+                        <input id="username" name="username" value="{{old('username')}}" type="text" placeholder="alparslan1029" required
                             class="block w-full rounded-md border-0 p-2 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-black sm:text-sm sm:leading-6" />
                     </div>
                     @error('username')
@@ -61,7 +61,7 @@
                     <label for="email" class="block text-sm font-medium leading-6 text-gray-900">Email
                         address</label>
                     <div class="mt-2">
-                        <input id="email" name="email" type="email" placeholder="alp.arslan@mail.com" required
+                        <input id="email" name="email" value="{{old('email')}}" type="email" placeholder="alp.arslan@mail.com" required
                             class="block w-full rounded-md border-0 p-2 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-black sm:text-sm sm:leading-6" />
                     </div>
                     @error('email')
@@ -73,7 +73,7 @@
                 <div>
                     <label for="password" class="block text-sm font-medium leading-6 text-gray-900">Password</label>
                     <div class="mt-2">
-                        <input id="password" name="password" type="password" placeholder="••••••••" required
+                        <input id="password" name="password" value="{{old("password")}}" type="password" placeholder="••••••••" required
                             class="block w-full rounded-md border-0 p-2 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-black sm:text-sm sm:leading-6" />
                     </div>
                     @error('password')
