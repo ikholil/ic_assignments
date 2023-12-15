@@ -56,8 +56,13 @@
                                     @if ($user->id == $post->user_id)
                                     <a href="{{route('editpost', $post->id)}}" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
                                         role="menuitem" tabindex="-1" id="user-menu-item-0">Edit</a>
-                                    <a href="{{route('deletepost', $post->id)}}" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
-                                        role="menuitem" tabindex="-1" id="user-menu-item-1">Delete</a>
+                                        <form method="POST" action="{{ route('deletepost', $post->id) }}" class="block w-full">
+                                            @csrf
+                                            @method('DELETE')
+                                            <button type="submit"
+                                                class="block px-4 py-2 text-sm text-gray-700 w-full text-start hover:bg-gray-100"
+                                                role="menuitem" tabindex="-1" id="user-menu-item-1">Delete</button>
+                                        </form>
                                     @endif
                                     <a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
                                         role="menuitem" tabindex="-1" id="user-menu-item-1">I don't wan't to see this</a>

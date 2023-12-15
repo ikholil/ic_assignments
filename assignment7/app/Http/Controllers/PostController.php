@@ -46,10 +46,17 @@ class PostController extends Controller
      */
     public function show(string $id)
     {
-        $post = DB::table('posts')->join('users', 'posts.user_id', 'users.id')->select('posts.*', 'users.username', 'users.email', 'users.firstname', 'users.lastname')->first();
+        $post = DB::table('posts')
+            ->join('users', 'posts.user_id', 'users.id')
+            ->select('posts.*', 'users.username', 'users.email', 'users.firstname', 'users.lastname')
+            ->where('posts.id', $id)
+            ->first();
+
         $user = Auth::user();
+
         return view('singlepost', compact('post', 'user'));
     }
+
 
     /**
      * Show the form for editing the specified resource.
@@ -70,9 +77,12 @@ class PostController extends Controller
         $validated = $request->validate([
             'post' => 'required',
         ]);
-        DB::table('posts')->where('id', $id)->update($validated);
+        $post = DB::table("posts")->where('id', $id)->first();
+        if ($post && $user && $user->id == $post->user_id) {
+            DB::table('posts')->where('id', $id)->update($validated);
 
-        return redirect()->route('home');
+            return redirect()->route('home');
+        }
     }
 
     /**
